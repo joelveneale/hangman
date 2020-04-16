@@ -1,4 +1,5 @@
 import random
+import sys
 
 # importing a list of words to choose from
 
@@ -6,7 +7,7 @@ words = open("sowpods.txt")
 list1 = words.readlines()
 hangman_words = []
 for item in list1:
-    if len(item) > 4:
+    if len(item) > 4 and len(item) < 12:
         hangman_words.append(item)
 
 #defining a function to select a random word from the hangman_words list
@@ -29,7 +30,7 @@ def create_list_of_letters(word):
     return list_of_letters
 
 letters_to_guess = create_list_of_letters(word_to_find)
-print(letters_to_guess)
+#print(letters_to_guess)
 
 # creating the empty list for the users guess to be based upon:
 
@@ -40,7 +41,7 @@ def create_empty_guess_list(list):
     return empty_list
 
 users_empty_guess_list = create_empty_guess_list(letters_to_guess)
-print(users_empty_guess_list)
+#print(users_empty_guess_list)
 
 #create a difficulty
 
@@ -61,22 +62,28 @@ def get_new_guess(word_list, guess_list, guess_count):
           if word_list[letter] == users_guess:
               guess_list[letter] = word_list[letter]
               print("You got a letter!!")
-              print(guess_list)
+              current_position = ''
+              for letter in guess_list:
+                  current_position = current_position + letter + ' '
+              print(current_position)
 
       if users_guess not in word_list:
           wrong_list.append(users_guess)
           print('That letter isn\'t in the word')
           print('Here are your previous wrong guesses: ')
+          current_wrong = ''
+          for letter in wrong_list:
+              current_wrong = current_wrong + letter + ' '
           print(wrong_list)
 
     if len(wrong_list) == guess_count:
         print("You ran out of guesses!")
+        print("The word was: " + letters_to_guess + "!")
     else:
-        print('You got the word!')
-
+        print('You got the word you legend')
 
 
 
 
 get_new_guess(letters_to_guess, users_empty_guess_list, guess_count)
-
+sys.exit()
