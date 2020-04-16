@@ -43,9 +43,17 @@ def create_empty_guess_list(list):
 users_empty_guess_list = create_empty_guess_list(letters_to_guess)
 #print(users_empty_guess_list)
 
+#welcome the user
+
+print("\n--- Welcome to HANGMAN ---\n")
+
+
+
+
 #create a difficulty
 
 guess_count = 10
+
 
 
 #create an empty list relative to the amount of wrong letters we will allow the user to select
@@ -74,10 +82,10 @@ def get_new_guess(word_list, guess_list, guess_count):
           current_wrong = ''
           for letter in wrong_list:
               current_wrong = current_wrong + letter + ' '
-          print(wrong_list)
+          print(current_wrong)
 
     if len(wrong_list) == guess_count:
-        print("You ran out of guesses!")
+        print("You ran out of guesses you plonker!")
         print("The word was: " + letters_to_guess + "!")
     else:
         print('You got the word you legend')
