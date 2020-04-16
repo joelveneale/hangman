@@ -62,27 +62,37 @@ def get_new_guess(word_list, guess_list, guess_count):
     wrong_list = []
     while '_' in guess_list and len(wrong_list) < guess_count:
 
-      users_guess = input("Please Enter a letter A-Z: ")
+      users_guess = input("Please Enter a letter A-Z: " + '\n')
       users_guess = users_guess.upper()
       #print(users_guess)
       for letter in range(len(word_list)):
 
           if word_list[letter] == users_guess:
-              guess_list[letter] = word_list[letter]
-              print("You got a letter!!")
-              current_position = ''
-              for letter in guess_list:
-                  current_position = current_position + letter + ' '
-              print(current_position)
+              if users_guess not in guess_list:
+                  guess_list[letter] = word_list[letter]
+                  print("You got a letter!!")
+                  current_position = ''
+                  for letter in guess_list:
+                      current_position = current_position + letter + ' '
+                  print(current_position + '\n')
+              else:
+                  print(current_position + '\n')
+                  print("You have already entered that letter! Please enter another: \n")
 
       if users_guess not in word_list:
-          wrong_list.append(users_guess)
-          print('That letter isn\'t in the word')
-          print('Here are your previous wrong guesses: ')
-          current_wrong = ''
-          for letter in wrong_list:
-              current_wrong = current_wrong + letter + ' '
-          print(current_wrong)
+          if users_guess not in wrong_list:
+              wrong_list.append(users_guess)
+              print('That letter isn\'t in the word')
+              print('Here are your previous wrong guesses: ')
+              current_wrong = ''
+              for letter in wrong_list:
+                  current_wrong = current_wrong + letter + ' '
+              print(current_wrong + '\n')
+          else:
+              print(current_wrong + '\n')
+              print("You have already entered that letter! Please enter another: \n")
+
+
 
     if len(wrong_list) == guess_count:
         print("You ran out of guesses you plonker!")
