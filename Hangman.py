@@ -1,3 +1,4 @@
+
 from GenerateWord import GenWord
 from Guess import Guess
 #welcome the user
@@ -5,18 +6,18 @@ from Guess import Guess
 print("\n--- Welcome to HANGMAN ---\n")
 
 #Generate the word via GenWord
+guess_count = 10
 word = GenWord()
 word.genword()
 print(word.word_to_find)
+
+
+
+
+#printing the word for testing purposes
+
+
 guess = Guess()
-guess.get_new_guess(word.letters_to_guess, word.users_empty_guess_list, guess.guess_count)
-
-
-
-
-
-
-
-
+guess.runguess(word.letters_to_guess, word.users_empty_guess_list, guess_count)
 
 sys.exit()
