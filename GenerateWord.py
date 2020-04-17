@@ -43,5 +43,13 @@ class GenWord:
             self.empty_list.append('_')
         return self.empty_list
 
+    def genword(self):
+
+
+        self.word_to_find = self.select_random_word(self.hangman_words)
+        self.letters_to_guess = self.create_list_of_letters(self.word_to_find)
+        self.users_empty_guess_list = self.create_empty_guess_list(self.letters_to_guess)
+
+
     #users_empty_guess_list = create_empty_guess_list(letters_to_guess)
     #print(users_empty_guess_list)
