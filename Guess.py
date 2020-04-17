@@ -13,10 +13,11 @@ class Guess:
         self.guess_list = guess_list
         self.guess_count = guess_count
         self.wrong_list = []
+
         while '_' in guess_list and len(self.wrong_list) < guess_count:
 
             self.get_new_guess()
-            self.check_guess(word_list, guess_list, self.users_guess)
+            self.check_guess(word_list, guess_list, self.users_guess, self.wrong_list)
             self.check_result(guess_count)
 
 
@@ -28,9 +29,9 @@ class Guess:
 
             print(self.users_guess)
 
-    def check_guess(self, word_list, guess_list, guess):
+    def check_guess(self, word_list, guess_list, guess, wrong_list):
         self.guess = guess
-
+        self.wrong_list = wrong_list
         for letter in range(len(word_list)):
 
             if word_list[letter] == self.guess:
